@@ -26,13 +26,10 @@ services:
     environment:
     - SA_PASSWORD=yourStrong(!)Password
     - ACCEPT_EULA=Y
-    volumes:
-    - db-restore-ccm:/usr/config/
     ports:
     - "1433:1433"
 volumes:
   static-content:
-  db-restore-ccm: 
   
   # db:
   #   image: mcr.microsoft.com/mssql/server:2017-latest
