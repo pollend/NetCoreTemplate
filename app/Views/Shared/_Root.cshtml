@@ -1,0 +1,17 @@
+@using app.Extensions
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    @Manifest.Script("main.js")
+    @Manifest.Style("main.css")
+    @RenderSection("Head", required: false)
+</head>
+<body>
+@RenderBody()
+@RenderSection("Javascript", required: false)
+
+@React.ReactBindComponents()
+</body>
+</html>

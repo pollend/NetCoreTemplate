@@ -1,0 +1,17 @@
+@{
+    Layout = "_Root";
+}
+
+@section Javascript {
+    @RenderSection("Javascript", required: false)
+}
+
+@section Head {
+    @RenderSection("Head", required: false)
+}
+<div>
+    <partial name="Partial/_LeftNavbar"/>
+    <div class="row">
+        @RenderBody()
+    </div>
+</div>

@@ -1,0 +1,24 @@
+@{
+    Layout = "_Wide";
+}
+@model app.Controllers.ViewModel.LoginViewModel
+
+
+<div class="grid-x grid-margin-x" >
+    <div class="cell large-4 large-offset-4 medium-6 medium-offset-3 login-container">
+        <form method="post" asp-action="Login" class="form login-form">
+            <h1 class="text-center">Log in</h1>
+            <label>Username
+                <input asp-for="Username">
+            </label>
+            <label>Password
+                <input asp-for="Password" >
+            </label>
+
+            <p><input type="submit" class="button expanded" value="Log in"/></p>
+            <p class="text-center"><a href="#">Forgot your password?</a></p>
+
+        </form>
+    </div>
+</div>
+

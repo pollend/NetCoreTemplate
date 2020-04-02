@@ -1,0 +1,41 @@
+
+version: "3.7"
+services:
+  web:
+    build: 
+      context: ./app
+      dockerfile: dev.Dockerfile
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+    - static-content:/src/wwwroot/dist
+    - ./app/:/src/
+    - /src/obj/
+    - /src/bin/
+    ports:
+    - 5000:5000
+  frontend:
+    build:
+      context: ./app
+      dockerfile: node.Dockerfile
+    volumes:
+    - static-content:/src/wwwroot/dist
+    - ./app/src:/src/src
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+    - SA_PASSWORD=yourStrong(!)Password
+    - ACCEPT_EULA=Y
+    volumes:
+    - db-restore-ccm:/usr/config/
+    ports:
+    - "1433:1433"
+volumes:
+  static-content:
+  db-restore-ccm: 
+  
+  # db:
+  #   image: mcr.microsoft.com/mssql/server:2017-latest
+  # migrate:
+  #   build: ./migrate/
+

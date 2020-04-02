@@ -1,0 +1,14 @@
+@{
+    Layout = "_Root";
+}
+
+@section Javascript {
+    @RenderSection("Javascript", required: false)
+}
+
+@section Head {
+    @RenderSection("Head", required: false)
+}
+
+<partial name="Partial/_Header"/>
+@RenderBody()
