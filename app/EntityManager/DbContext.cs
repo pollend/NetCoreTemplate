@@ -2,17 +2,23 @@
 using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace app.EntityManager
 {
     public class DbContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        private readonly ISessionStore _session;
-        private readonly IConfiguration _configuration;
-        public DbContext(DbContextOptions<DbContext> options, ISessionStore session, IConfiguration configuration) : base(options)
+        private IConfiguration _configuration;
+        public DbContext(IConfiguration configuration)
         {
-            _session = session;
-            _configuration = configuration;
+            this._configuration = configuration;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql(this._configuration.GetConnectionString("db"));
+
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

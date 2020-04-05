@@ -1,0 +1,12 @@
+image:
+  file: .gitpod.dockerfile
+tasks:
+  - command: >
+      cd app &&
+      pg_start.sh &&
+      dotnet watch run app/app.csproj --urls https://0.0.0.0:8000 &&
+      npm run build
+      
+
+ports:
+  - port: 8000

@@ -1,11 +1,13 @@
 using System;
 using app.Extensions;
-using app.EntityManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DbContext = app.EntityManager.DbContext;
+
 namespace app
 {
     public class Startup
