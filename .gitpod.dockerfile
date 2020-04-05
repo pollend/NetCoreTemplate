@@ -1,8 +1,7 @@
 FROM gitpod/workspace-postgres
 
-RUN sudo apt-get update \
-    && sudo apt-get install -y \
-    nodejs npm 
+
+USER root
 
 RUN wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb && \
     dpkg -i packages-microsoft-prod.deb && \
@@ -14,7 +13,8 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsof
         dotnet-sdk-2.2 \
         dotnet-sdk-3.1 \
         fsharp \
-        mono-complete && \
-    rm -rf /var/lib/apt/lists/*
+        mono-complete \
+        nodejs \ 
+        npm 
 
 ENV ASPNETCORE_ENVIRONMENT=Development
